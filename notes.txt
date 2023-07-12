@@ -3,3 +3,8 @@ npm create latest@vite
 npm install react-router-dom
 
 npm install -g json-server
+
+Versión >7 de react-redux es que soporta hooks
+En versiones anteriores se utilizaban clases
+npm i react-redux redux redux-thunk
+npm i @reduxjs/toolkit
