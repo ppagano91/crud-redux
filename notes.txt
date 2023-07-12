@@ -1,3 +1,5 @@
 npm create latest@vite
 
 npm install react-router-dom
+
+npm install -g json-server
