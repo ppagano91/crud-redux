@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between mb-5">
       <div>
         <h1>
           <Link to={"/"} className="text-light">
