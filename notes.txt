@@ -1,0 +1,3 @@
+npm create latest@vite
+
+npm install react-router-dom
