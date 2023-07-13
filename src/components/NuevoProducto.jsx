@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // Actions de Redux
 import { crearNuevoProductoAction } from "../actions/productoActions";
 
-const NuevoProducto = () => {
+const NuevoProducto = ({ history }) => {
   // State del componente
   const [nombre, guardarNombre] = useState("");
   const [precio, guardarPrecio] = useState(0);
+
+  let navigate = useNavigate();
 
   // Utilizar use dispatch y te crea una funcion
   const dispatch = useDispatch();
@@ -32,6 +35,7 @@ const NuevoProducto = () => {
 
     // Crear el nuevo producto
     agregarProducto({ nombre, precio });
+    navigate("/");
   };
   return (
     <div className="row justify-content-center">

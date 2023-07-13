@@ -29,6 +29,26 @@
       "nombre": "Jugo de Naranja y Durazno",
       "precio": 250,
       "id": 6
+    },
+    {
+      "nombre": "Rib Eye",
+      "precio": 400,
+      "id": 7
+    },
+    {
+      "nombre": "Judo de Piña",
+      "precio": 100,
+      "id": 8
+    },
+    {
+      "nombre": "Judo de Mango",
+      "precio": 150,
+      "id": 9
+    },
+    {
+      "nombre": "Jugo de Papaya",
+      "precio": 200,
+      "id": 10
     }
   ]
 }

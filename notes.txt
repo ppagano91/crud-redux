@@ -10,3 +10,5 @@ npm i react-redux redux redux-thunk
 npm i @reduxjs/toolkit
 
 npm install axios
+
+npm install sweetalert2
