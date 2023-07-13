@@ -8,3 +8,5 @@ Versión >7 de react-redux es que soporta hooks
 En versiones anteriores se utilizaban clases
 npm i react-redux redux redux-thunk
 npm i @reduxjs/toolkit
+
+npm install axios

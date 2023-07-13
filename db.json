@@ -24,6 +24,11 @@
       "nombre": "Jugo de Fresa",
       "precio": "200",
       "id": 5
+    },
+    {
+      "nombre": "Jugo de Naranja y Durazno",
+      "precio": 250,
+      "id": 6
     }
   ]
 }
