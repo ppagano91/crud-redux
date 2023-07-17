@@ -5,6 +5,9 @@ import {
   COMENZAR_DESCARGA_PRODUCTOS,
   DESCAGRA_PRODUCTOS_EXITO,
   DESCAGRA_PRODUCTOS_ERROR,
+  OBTENER_PRODUCTO_ELIMINAR,
+  PRODUCTO_ELIMINAR_EXITO,
+  PRODUCTO_ELIMINAR_ERROR,
 } from "../types";
 
 import clienteAxios from "../config/axios";
@@ -89,4 +92,27 @@ const descargarProductosExitosa = (productos) => ({
 const descargarProductosError = () => ({
   type: DESCAGRA_PRODUCTOS_ERROR,
   payload: true,
+});
+
+// Selecciona y elimina el producto
+export function borrarProductoAction(id) {
+  return async (dispatch) => {
+    dispatch(obtenerProductoEliminar(id));
+
+    // try {
+    //   await clienteAxios.delete(`/productos/${id}`);
+    //   dispatch(eliminarProductoExito());
+
+    //   // Si se elimina, mostrar alerta
+    //   Swal.fire("Eliminado!", "El producto se eliminó correctamente.", "success");
+    // } catch (error) {
+    //   console.log(error);
+    //   dispatch(eliminarProductoError());
+    // }
+  }
+}
+
+const obtenerProductoEliminar = (id) => ({
+  type: OBTENER_PRODUCTO_ELIMINAR,
+  payload: id,
 });
