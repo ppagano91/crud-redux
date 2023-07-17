@@ -8,6 +8,7 @@ import {
   OBTENER_PRODUCTO_ELIMINAR,
   PRODUCTO_ELIMINAR_EXITO,
   PRODUCTO_ELIMINAR_ERROR,
+  OBTENER_PRODUCTO_EDITAR,
 } from "../types";
 
 // Cada reducer tiene su propio state
@@ -82,6 +83,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: action.payload,
+      };
+
+      case OBTENER_PRODUCTO_EDITAR:
+      return {
+        ...state,
+        productoeditar: action.payload,
       };
       
     default:

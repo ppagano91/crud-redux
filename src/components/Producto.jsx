@@ -1,14 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
 
 // Redux
 import { useDispatch } from 'react-redux'
-import { borrarProductoAction } from '../actions/productoActions'
-import Swal from 'sweetalert2'
+import { borrarProductoAction, obtenerProductoEditarAction } from '../actions/productoActions'
 
 const Producto = ({producto}) => {
   const {nombre, precio, id} = producto;
+
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   // Confirmar si desea eliminarlo
   const confirmarEliminarProducto = id => {
@@ -30,6 +34,15 @@ const Producto = ({producto}) => {
     })
     
   }
+
+  // Funcion que redirige de forma programada
+  const redireccionarEdicion = producto => {
+    dispatch(obtenerProductoEditarAction(producto));
+    navigate(`/productos/editar/${producto.id}`, {state: producto})
+  }
+
+
+
   return (
     (
         <tr key={id}>
@@ -38,7 +51,7 @@ const Producto = ({producto}) => {
             <span className="font-weight-bold">${precio}</span>
           </td>
           <td className='acciones'>
-            <Link className="btn btn-primary mr-2" to={`/productos/editar/${id}`}>Editar</Link>
+            <button  className="btn btn-primary mr-2" onClick={()=>redireccionarEdicion(producto)}>Editar</button>
             <button type='button' className="btn btn-danger" onClick={()=>confirmarEliminarProducto(id)}>Eliminar</button>
           </td>
         </tr>

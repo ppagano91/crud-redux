@@ -8,6 +8,9 @@ import {
   OBTENER_PRODUCTO_ELIMINAR,
   PRODUCTO_ELIMINAR_EXITO,
   PRODUCTO_ELIMINAR_ERROR,
+  OBTENER_PRODUCTO_EDITAR,
+  PRODUCTO_EDITAR_EXITO,
+  PRODUCTO_EDITAR_ERROR,
 } from "../types";
 
 import clienteAxios from "../config/axios";
@@ -126,4 +129,16 @@ const eliminarProductoExito = () => ({
 const eliminarProductoError = () => ({
   type: PRODUCTO_ELIMINAR_ERROR,
   payload: true,
+});
+
+// Colocar producto en edición
+export function obtenerProductoEditarAction(producto) {
+  return (dispatch) => {
+    dispatch(obtenerProductoEditar(producto));
+  }
+}
+
+const obtenerProductoEditar = (producto) => ({
+  type: OBTENER_PRODUCTO_EDITAR,
+  payload: producto,
 });
