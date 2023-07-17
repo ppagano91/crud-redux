@@ -68,6 +68,21 @@ export default function (state = initialState, action) {
         ...state,
         productoeliminar: action.payload,
       };
+
+      case PRODUCTO_ELIMINAR_EXITO:
+      return {
+        ...state,
+        productos: state.productos.filter(
+          (producto) => producto.id !== state.productoeliminar
+        ),
+        productoeliminar: null,
+      };
+
+      case PRODUCTO_ELIMINAR_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
       
     default:
       return state;
