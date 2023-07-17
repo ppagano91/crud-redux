@@ -61,20 +61,18 @@ export function obtenerProductosAction() {
     dispatch(descargarProductos());
 
     try {
-      const respuesta = await clienteAxios.get("/productos");
-      dispatch(descargarProductosExitosa(respuesta.data));
+      // setTimeout para probar el loading
+      setTimeout(async () => {
+        const respuesta = await clienteAxios.get("/productos");      
+        dispatch(descargarProductosExitosa(respuesta.data));
+        
+      }, 2000);
     } catch (error) {
       console.log(error);
       dispatch(descargarProductosError());
     }
 
-    try {
-      const respuesta = await clienteAxios.get("/productos");
-      dispatch(descargarProductosExitosa(respuesta.data));
-    } catch (error) {
-      console.log(error);
-      dispatch(descargarProductosError());
-    }
+    
   };
 }
 
