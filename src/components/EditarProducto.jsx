@@ -1,12 +1,47 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { editarProductoAction } from "../actions/productoActions";
+import { useNavigate } from "react-router-dom";
 
 const EditarProducto = () => {
+  // utilizar use dispatch y te crea una funcion
+  const dispatch = useDispatch();
 
-  const producto = useSelector(state => state.rootReducer.productos.productoeditar);
+  // useNavigate
+  const navigate = useNavigate();
+
+  // nuevo state de producto
+  const [producto, guardarProducto] = useState({
+    nombre: "",
+    precio: 0,
+  });
+
+  const productoeditar = useSelector(state => state.rootReducer.productos.productoeditar);
+  
+  // llenar el state automaticamente
+  useEffect(() => {
+    guardarProducto(productoeditar);
+  }, [productoeditar]);
+  
+  // leer los datos del formulario
+  const onChangeFormulario = e => {
+    guardarProducto({
+      ...producto,
+      [e.target.name]: e.target.value,
+    });
+  };
+  
+  
+  
   if(!producto) return null;
-
   const {nombre, precio, id} = producto;
+
+
+  const sumbitEditarProducto = e => {
+    e.preventDefault();
+    dispatch(editarProductoAction(producto)); 
+    navigate("/");   
+  };
   return (
     <div className="row justify-content-center">
       <div className="col-md-8">
@@ -15,7 +50,7 @@ const EditarProducto = () => {
             <h2 className="text-center mb-4 font-weight-bold">
               Editar Producto
             </h2>
-            <form action="">
+            <form action="" onSubmit={sumbitEditarProducto}>
               <div className="form-group">
                 <label htmlFor="nombre">Nombre Producto</label>
                 <input
@@ -25,6 +60,7 @@ const EditarProducto = () => {
                   name="nombre"
                   id="nombre"
                   value={nombre}
+                  onChange={onChangeFormulario}
                 />
               </div>
               <div className="form-group">
@@ -36,6 +72,7 @@ const EditarProducto = () => {
                   name="precio"
                   id="precio"
                   value={precio}
+                  onChange={onChangeFormulario}
                 />
               </div>
               <button

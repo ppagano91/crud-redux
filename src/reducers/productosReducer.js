@@ -8,7 +8,10 @@ import {
   OBTENER_PRODUCTO_ELIMINAR,
   PRODUCTO_ELIMINAR_EXITO,
   PRODUCTO_ELIMINAR_ERROR,
+  COMENZAR_EDICION_PRODUCTO,
   OBTENER_PRODUCTO_EDITAR,
+  PRODUCTO_EDITAR_EXITO,
+  PRODUCTO_EDITAR_ERROR,
 } from "../types";
 
 // Cada reducer tiene su propio state
@@ -89,9 +92,32 @@ export default function (state = initialState, action) {
       return {
         ...state,
         productoeditar: action.payload,
-      };
+      };      
       
-    default:
-      return state;
+      case PRODUCTO_EDITAR_EXITO:
+        return {
+          ...state,
+          productoeditar: null,
+          productos: state.productos.map((producto) =>
+          producto.id === action.payload.id
+          ? (producto = action.payload)
+          : producto
+          ),
+        };
+        
+        case PRODUCTO_EDITAR_ERROR:
+          return {
+            ...state,
+            error: action.payload,
+          };
+          
+        // case COMENZAR_EDICION_PRODUCTO:
+        // return {
+        //   ...state,
+        //   productoeditar: action.payload,
+        // };
+          
+          default:
+            return state;
   }
 }
