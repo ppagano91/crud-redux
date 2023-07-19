@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nombre": "Jugo de Zanahoria",
-      "precio": "100"
+      "precio": "150"
     },
     {
       "id": 2,
@@ -49,6 +49,11 @@
       "nombre": "Jugo de Papaya",
       "precio": 200,
       "id": 10
+    },
+    {
+      "nombre": "Licuado de Banana",
+      "precio": 250,
+      "id": 11
     }
   ]
 }

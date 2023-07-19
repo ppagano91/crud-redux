@@ -11,7 +11,9 @@ const Productos = () => {
   useEffect(() => {
     // Consultar la API
     const cargarProductos = () => dispatch(obtenerProductosAction());
-    cargarProductos();    
+    cargarProductos();
+
+    // eslint-disable-next-line
     
   }, []);
 
@@ -37,7 +39,7 @@ const Productos = () => {
 
         <tbody>
           {productos == undefined ? null : productos.length === 0 ? (
-            <tr>
+            <tr key={0}>
               <td colSpan="3" className="text-center">
                 No hay productos
               </td>

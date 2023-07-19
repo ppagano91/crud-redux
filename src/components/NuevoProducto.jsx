@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Actions de Redux
 import { crearNuevoProductoAction } from "../actions/productoActions";
-import { mostrarAlerta } from "../actions/alertaActions";
+import { mostrarAlerta, ocultarAlertaAction } from "../actions/alertaActions";
 
 const NuevoProducto = ({ history }) => {
   // State del componente
@@ -17,8 +17,10 @@ const NuevoProducto = ({ history }) => {
   const dispatch = useDispatch();
 
   // Acceder al state del store
-  const cargando = useSelector((state) => state?.productos?.loading);
-  const error = useSelector((state) => state?.productos?.error);
+  const cargando = useSelector((state) => state?.rootReducer?.productos?.productos?.loading);
+  const error = useSelector((state) => state?.rootReducer?.productos?.productos?.error);
+  const alerta = useSelector((state) => state?.rootReducer?.alerta?.alerta);
+
 
   // Mandar llamar el action de productoAction con un dispatch
   const agregarProducto = (producto) =>
@@ -40,6 +42,7 @@ const NuevoProducto = ({ history }) => {
     }
 
     // Si no hay errores
+    dispatch(ocultarAlertaAction());
 
     // Crear el nuevo producto
     agregarProducto({ nombre, precio });
@@ -53,6 +56,7 @@ const NuevoProducto = ({ history }) => {
             <h2 className="text-center mb-4 font-weight-bold">
               Agregar Producto
             </h2>
+            {alerta ? <p className={alerta.classes}>{alerta.msg}</p> : null}
             <form onSubmit={submitNuevoProducto} action="">
               <div className="form-group">
                 <label htmlFor="nombre">Nombre Producto</label>
